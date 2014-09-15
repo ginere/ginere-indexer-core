@@ -44,7 +44,7 @@
 		<developerConnection>scm:git:https://github.com/ginere/ginere-indexer-core</developerConnection>
 
 		<url>https://github.com/ginere/ginere-indexer-core</url>
-		<tag>ginere-indexer-core-1.0.2</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<organization>
@@ -118,6 +118,7 @@
 			<scope>compile</scope>
 		</dependency>
 
+<!--
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
@@ -143,7 +144,7 @@
 			<artifactId>commons-codec</artifactId>
 			<version>${commons-codec.version}</version>
 		</dependency>
-
+-->
 		<dependency>
 			<groupId>eu.ginere</groupId>
 			<artifactId>ginere-base</artifactId>
@@ -165,7 +166,7 @@
 		<github.global.server>github</github.global.server>
 
 		<!-- GINERE -->
-		<ginere-base.version>1.0.2-SNAPSHOT</ginere-base.version>
+		<ginere-base.version>1.2.0</ginere-base.version>
 
 	</properties>
 
