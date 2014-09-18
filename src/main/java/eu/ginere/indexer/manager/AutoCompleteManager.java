@@ -1,4 +1,4 @@
-package eu.ginere.indexer.indexer;
+package eu.ginere.indexer.manager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,18 +7,34 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import eu.ginere.base.util.dao.DaoManagerException;
-import eu.ginere.base.util.manager.AbstractManager;
+import eu.ginere.base.util.test.TestResult;
+import eu.ginere.indexer.dao.IndexerDAOInterface;
+import eu.ginere.indexer.dao.TokenDAOInterface;
 import eu.ginere.indexer.util.IndexerStringUtils;
 
-public class AutoCompleteManager extends AbstractManager {
+/**
+ * Use this to get the autocompletation list 
+ * 
+ * @author ginere
+ *
+ */
+public class AutoCompleteManager extends AbstractIndexerManager{
 	
 	static final Logger log = Logger.getLogger(AutoCompleteManager.class);
+	    	
+    AutoCompleteManager(IndexerDAOInterface indexerDAO,TokenDAOInterface tokenDAO){
+        super(indexerDAO,tokenDAO);
+    }
 
-	/**
-	 * Numero de elementos maximos que devuelve el auto complete
-	 */
-	static public final int NUMBER_AUTO_COMPLETE=5;
 	
+    /**
+	 * @return The test result.
+	 */
+	public TestResult test(){
+        return super.testProtected();
+    }
+
+    
 	/**
 	 * Propone autocompletacion en la busqueda. DEvuelve en primer lugar la cadenas de busqeuda que dan mas resultados
 	 * 
@@ -26,25 +42,23 @@ public class AutoCompleteManager extends AbstractManager {
 	 * @param number Numero de cadenas propuestass
 	 * @return
 	 */
-	public static List<String> searchAutoComplete(String tokens,String type){
-		// obtenemos el ultimo token que es el que hay que auto completar
+	public List<String> searchAutoComplete(String tokens,String type,int numberOfElements){
+		// We get the last token that we have to autocomplete.
+		
 		String lastToken=IndexerStringUtils.getLastIncompleteToken(tokens);
 
-		// With DNI numbers ther are 2800000 tokens that start with a number
-		// We have to vaoid that
+		// We have to choose if number will be autocompleted.
+		
 		boolean isNumeric=StringUtils.isNumeric(lastToken);
+		
 		if (lastToken !=null && ((isNumeric && lastToken.length()>=3) || !isNumeric)){
 			try {
 				
-//				Usar el TokenDAO
-				
-				// Obtenemos las completaciones
-//				List <String> list=IndexerDAO.DAO.getAutoComplete(lastToken,NUMBER_AUTO_COMPLETE);
-				List <String> list=TokenDAO.DAO.getAutoComplete(lastToken,type,NUMBER_AUTO_COMPLETE);
+				List <String> list=tokenDAO.getAutoComplete(lastToken,type,numberOfElements);
 				List <String> ret=new ArrayList<String>(list.size());
 				
-				// devolvemos una lista de valores con el comienzo de cada valor igia al los tokens
-				// y al final el valor propuesto
+				// We return a list of autocomplete string ex: "from One upon a t" we will return 
+				// "from One upon a time","from One upon a temp","from One upon a tall", etc ...
 				String start=tokens.substring(0,tokens.lastIndexOf(lastToken));
 				for (String auto:list){
 					ret.add(start+auto);

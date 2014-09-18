@@ -1,27 +1,32 @@
-package eu.ginere.indexer.indexer;
+package eu.ginere.indexer.manager;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is represents the result of a search
+ * 
+ * @author ginere
+ *
+ */
 public class SearchResult {
 
 	public static final List<Object> EMPTY_OBJECT_LIST=new ArrayList<Object>(0);;
+	public static final SearchResult EMPTY_RESULT=new SearchResult();
+	
 	public final List<Object> objectList;
 
-	public final int page;
+	public final int pageNumber;
 	public final int pageSize;
 	public final int total;
 
 	public long laps;
-
-	
-	public static final SearchResult EMPTY_RESULT=new SearchResult();
 	
 	private SearchResult() {
 
 		this.objectList=EMPTY_OBJECT_LIST;
 
-		this.page=0;
+		this.pageNumber=0;
 		this.pageSize=0;
 		this.total=0;
 		
@@ -35,11 +40,9 @@ public class SearchResult {
 
 		this.objectList=objectList;
 
-		this.page=page;
+		this.pageNumber=page;
 		this.pageSize=pageSize;
 		this.total=total;
-//		
-//		this.laps=laps;
 	}
 
 	public List<Object> getObjectList() {
@@ -47,7 +50,7 @@ public class SearchResult {
 	}
 
 	public int getPage() {
-		return page;
+		return pageNumber;
 	}
 
 	public int getPageSize() {

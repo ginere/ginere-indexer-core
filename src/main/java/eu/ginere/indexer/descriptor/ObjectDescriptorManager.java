@@ -4,20 +4,24 @@ import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
 
-import eu.ginere.indexer.indexer.IndexerResult;
+/**
+ * This use this class to subcrive Objects Descriptor and to retreyve the object descriptor associated to one object.
+ * 
+ * @author ginere
+ *
+ */
+public class ObjectDescriptorManager {
 
-public class DescriptorManager {
-
-	static final Logger log = Logger.getLogger(DescriptorManager.class);
+	static final Logger log = Logger.getLogger(ObjectDescriptorManager.class);
 
 	
-	public static final Hashtable<String, IndexerDescriptor<?>> cache=new Hashtable<String, IndexerDescriptor<?>>();
+	public static final Hashtable<String, IndexerObjectDescriptor<?>> cache=new Hashtable<String, IndexerObjectDescriptor<?>>();
 
 	
 //	public static final PerfilIndexerDescriptor DESCRIPTOR=PerfilIndexerDescriptor.DESCRIPTOR;
 
 	
-	public static void subscribe(IndexerDescriptor<?> descriptor){
+	public static void subscribe(IndexerObjectDescriptor<?> descriptor){
 		String key=descriptor.getType();
 		
 		cache.put(key, descriptor);
@@ -26,7 +30,7 @@ public class DescriptorManager {
 	
 	public static Object get(IndexerResult result,String style) {
 		String type=result.getType();
-		IndexerDescriptor<?>descriptor=cache.get(type);
+		IndexerObjectDescriptor<?>descriptor=cache.get(type);
 		
 		if (descriptor == null){
 			log.error("No descriptor for type:'"+type+"'");

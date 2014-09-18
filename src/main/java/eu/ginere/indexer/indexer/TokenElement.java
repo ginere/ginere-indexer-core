@@ -14,14 +14,14 @@ public class TokenElement implements Serializable {
 	
 	private final String token;
 	private final String type;
-	private final int number;
+	private final int count;
 
 	public TokenElement(String tokens, 
 				  String type, 
 				  int nmber) {
 		this.token=tokens;
 		this.type=type;
-		this.number=nmber;
+		this.count=nmber;
 	}
 
 	public String getToken(){
@@ -36,8 +36,8 @@ public class TokenElement implements Serializable {
 		return ToStringBuilder.reflectionToString(this,ToStringStyle.SIMPLE_STYLE);		
 	}
 
-	public int getNumber() {
-		return number;
+	public int getCount() {
+		return count;
 	}
 }
 
