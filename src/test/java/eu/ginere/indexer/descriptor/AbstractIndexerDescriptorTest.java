@@ -1,4 +1,4 @@
-package es.ginere.indexer.descriptor;
+package eu.ginere.indexer.descriptor;
 
 import java.util.Hashtable;
 import java.util.List;

@@ -26,11 +26,14 @@ public class GlobalManager extends AbstractManager implements TestInterface{
     private final IndexerManager indexerManager;
     private final SearchManager searchManager;
     	
-    
-    
-    public GlobalManager(IndexerDAOInterface indexerDAO,TokenDAOInterface tokenDAO) throws DaoManagerException{
+        
+    public GlobalManager(IndexerDAOInterface indexerDAO,
+                         TokenDAOInterface tokenDAO) throws DaoManagerException{
+        
     	if (indexerDAO == null || tokenDAO == null){
-    		throw new DaoManagerException("The IndexerDAOInterface:'"+indexerDAO+"' or the TokenDAOInterface:'"+tokenDAO+"' are null");
+    		throw new DaoManagerException("The IndexerDAOInterface:'"+indexerDAO+
+                                          "' or the TokenDAOInterface:'"+tokenDAO+
+                                          "' are null");
     	}
         this.indexerDAO=indexerDAO;
     	this.tokenDAO=tokenDAO;
