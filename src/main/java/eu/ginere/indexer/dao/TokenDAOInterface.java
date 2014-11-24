@@ -31,7 +31,7 @@ public interface TokenDAOInterface extends TestInterface{
 	 * @param type
 	 * @return
 	 */
-	public Collection<String> sort(HashSet<String> tokensSet, String type);
+	public Collection<String> sort(HashSet<String> tokensSet, String type) throws DaoManagerException;
 
 
 	public List<String> getAutoComplete(String token, String type,

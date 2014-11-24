@@ -43,10 +43,15 @@ public class IndexerManager extends AbstractIndexerManager {
 				log.debug("Result:"+indx);
 			}
 			
+			if (indx.token == null || "".equals(indx.token)){
+				log.warn("Empty toke:"+indx);
+			} else {
+			
 //			actualizar tambien los tokens ....
 //			TokenDAO.DAO.updateOrInsert(indx.getToken(),indx.getType());
 			
 			indexerDAO.insert(indx);
+			}
 		}
 	}
 
