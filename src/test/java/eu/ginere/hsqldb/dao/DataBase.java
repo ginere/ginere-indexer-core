@@ -28,6 +28,8 @@ public class DataBase implements TestInterface{
 
 	protected static final Logger log = Logger.getLogger(DataBase.class);
 
+	private static final String TEST_QUERY = "SELECT 1 FROM INFORMATION_SCHEMA.SYSTEM_USERS";
+
 	public static DataBase DEFAULT_DATABASE=null;
 
 	private DataSource dataSource;
@@ -104,7 +106,7 @@ public class DataBase implements TestInterface{
 	public boolean testConnection(DataSource dataSource) {
 		try {
 			Connection connection = getConnection();
-			String testQuery="SELECT 1 from DUAL";
+			String testQuery=TEST_QUERY;
 			try {
 				PreparedStatement pstm = getPrepareStatement(connection,
 															 testQuery);

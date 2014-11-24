@@ -14,10 +14,47 @@ public class AbstractDAO implements TestInterface{
 	
 	private DataBase dataBase=null;
 	
-	protected AbstractDAO(){
+    protected final String tableName;
+    private final String createQuery[][];
+
+//	protected AbstractDAO(){
+//		this.dataBase=DataBase.DEFAULT_DATABASE;
+//		this.tableName="";
+//		this.createQuery
+//	}
+
+	protected AbstractDAO(String tableName,String createQuery[][]){
 		this.dataBase=DataBase.DEFAULT_DATABASE;		
+        this.tableName=tableName;
+        this.createQuery=createQuery;
 	}
 	
+	public void createTable() throws DaoManagerException{
+
+        for (int i=0;i<createQuery.length;i++){
+            for (String query:createQuery[i]){
+            	this.dataBase.executeUpdate(query);
+            }
+        }
+	}
+	
+
+	public void createIndexes(String[][] createIndexArray) throws DaoManagerException {
+		for (int i = 0; i < createQuery.length; i++) {
+			String name = createQuery[i][0];
+			String query = createQuery[i][1];
+			this.dataBase.executeUpdate(query);
+		}
+	}
+
+	public void dropIndexes(String[][] createIndexArray) throws DaoManagerException {
+		for (int i = 0; i < createQuery.length; i++) {
+			String name = createQuery[i][0];
+			String query = createQuery[i][1];
+			this.dataBase.executeUpdate(query);
+		}
+	}
+		
 	public void setDataBase(DataBase dataBase){
 		this.dataBase=dataBase;		
 	}

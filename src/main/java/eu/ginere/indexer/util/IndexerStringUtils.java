@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 public abstract class IndexerStringUtils{
 
 	static final Logger log = Logger.getLogger(IndexerStringUtils.class);
-	private static final String SEPARATOR_CHARS = "'()/-, \t";
+	private static final String SEPARATOR_CHARS = "'()/-, \t\n\r";
 
 
 	public static String getStringValue(Object value) {

@@ -1,7 +1,5 @@
 package eu.ginere.indexer.hsqldb;
 
-import java.sql.SQLException;
-
 import javax.naming.NamingException;
 
 import junit.framework.TestCase;
@@ -11,17 +9,17 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import eu.ginere.hsqldb.dao.DataBase;
-import eu.ginere.indexer.hsqldb.dao.IndexerDAO;
+import eu.ginere.indexer.hsqldb.dao.TokenDAO;
 
-public class IndexerDAOTest extends TestCase {
-	static final Logger log = Logger.getLogger(IndexerDAOTest.class);
+public class TokenDAOTest extends TestCase {
+	static final Logger log = Logger.getLogger(TokenDAOTest.class);
 		
 	@Test
 	public void testInsert() throws Exception {
 		try {
 			setDataSource();
-			IndexerDAO.DAO.createTable();
-			IndexerDAO.DAO.test();
+			TokenDAO.DAO.createTable();
+			TokenDAO.DAO.test();
 			
 		}catch (Exception e) {
 			log.error("", e);
@@ -47,7 +45,7 @@ public class IndexerDAOTest extends TestCase {
 		
 //		Connection c = DriverManager.getConnection("jdbc:hsqldb:mem:testdb", "SA", "");
 		
-        DataBase.initDatasource("hsqldb-YQOL",datasource);
+        DataBase.initDatasource("YQOL",datasource);
         
 	}
 
