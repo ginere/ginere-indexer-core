@@ -3,6 +3,8 @@ package eu.ginere.indexer.manager;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  * This is represents the result of a search
  * 
@@ -67,5 +69,9 @@ public class SearchResult {
 
 	public void setLaps(long laps) {
 		this.laps = laps;
+	}
+	
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
 	}
 }

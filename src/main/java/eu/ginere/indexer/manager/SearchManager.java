@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import eu.ginere.base.util.dao.DaoManagerException;
@@ -147,13 +148,21 @@ public class SearchManager extends AbstractIndexerManager{
 	}
 
 	private List<IndexerResult> search(HashSet<String> tokensSet,
-			String type, int firstElement, int pageSize) throws DaoManagerException {
+									   String type, 
+									   int firstElement, 
+									   int pageSize) throws DaoManagerException {
 		if (tokensSet.size() == 1) {
 			String token=tokensSet.iterator().next();
 			return indexerDAO.search(token,type,firstElement,pageSize);
 		} else {
 			Collection<String> sortedTokens=tokenDAO.sort(tokensSet,type);
-			return indexerDAO.searchTypeBis(sortedTokens,type,firstElement,pageSize);
+			
+			if (sortedTokens.size() != 0) {
+				return indexerDAO.searchTypeBis(sortedTokens,type,firstElement,pageSize);
+			}else {
+				log.warn("++++ Empty sorted list for tokens:"+StringUtils.join(tokensSet,'|'));
+				return IndexerResult.EMPTY_LIST;
+			}
 		}
 	}
 

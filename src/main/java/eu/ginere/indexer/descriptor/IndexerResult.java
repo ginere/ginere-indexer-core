@@ -1,6 +1,8 @@
 package eu.ginere.indexer.descriptor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -17,6 +19,8 @@ public class IndexerResult implements Serializable {
 	 * Serial Id
 	 */
 	private static final long serialVersionUID = "$Version$".hashCode();
+
+	public static final List<IndexerResult> EMPTY_LIST = new ArrayList<IndexerResult>(0);
 	
 	public final String type;
 	public final String id;
