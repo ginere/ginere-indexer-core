@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
+import eu.ginere.base.util.descriptor.annotation.Description;
+
 /**
  * This is represents the result of a search
  * 
@@ -16,10 +18,16 @@ public class SearchResult {
 	public static final List<Object> EMPTY_OBJECT_LIST=new ArrayList<Object>(0);;
 	public static final SearchResult EMPTY_RESULT=new SearchResult();
 	
+	@Description(description = "The objects")
 	public final List<Object> objectList;
 
+	@Description(description = "The page number")
 	public final int pageNumber;
+	
+	@Description(description = "The page size")
 	public final int pageSize;
+	
+	@Description(description = "The total elemnts number")
 	public final int total;
 
 	public long laps;

@@ -1,4 +1,4 @@
-package eu.ginere.hsqldb.dao;
+package eu.ginere.test.hsqldb.dao;
 
 /**
  * @author ventura

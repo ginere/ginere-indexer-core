@@ -31,13 +31,14 @@ public interface IndexerObjectDescriptor<T>  {
 	public List<IndexerElement> getIndexerElements(T object) throws DaoManagerException;
 	
 	/**
-	 * Returns the object associated to a research.
-	 * The style of the object to be returned.
+	 * Returns an object associated to a research.
+	 * The style of the object to be returned. thats the reason why the result is not T because 
+	 * depending on the style this can return a different type of object
 	 * 
 	 * @param result
 	 * @param style
 	 * @return
 	 */
-	public T get(IndexerResult result,String style);
+	public Object get(IndexerResult result,String style);
 	
 }

@@ -1,4 +1,4 @@
-package eu.ginere.indexer.hsqldb;
+package eu.ginere.indexer.test.hsqldb;
 
 import javax.naming.NamingException;
 
@@ -9,12 +9,12 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import eu.ginere.base.util.dao.DaoManagerException;
-import eu.ginere.hsqldb.dao.DataBase;
-import eu.ginere.indexer.hsqldb.dao.IndexerDAO;
-import eu.ginere.indexer.hsqldb.dao.TokenDAO;
 import eu.ginere.indexer.hsqldb.page.WebPageDAO;
 import eu.ginere.indexer.hsqldb.page.WebPageUpdater;
 import eu.ginere.indexer.manager.GlobalManager;
+import eu.ginere.indexer.test.hsqldb.dao.IndexerDAO;
+import eu.ginere.indexer.test.hsqldb.dao.TokenDAO;
+import eu.ginere.test.hsqldb.dao.DataBase;
 
 public class WebPageUpdaterTest extends TestCase {
 

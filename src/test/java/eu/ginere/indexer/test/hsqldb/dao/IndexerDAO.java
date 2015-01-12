@@ -1,4 +1,4 @@
-package eu.ginere.indexer.hsqldb.dao;
+package eu.ginere.indexer.test.hsqldb.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,10 +14,10 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import eu.ginere.base.util.dao.DaoManagerException;
-import eu.ginere.hsqldb.dao.AbstractDAO;
 import eu.ginere.indexer.dao.IndexerDAOInterface;
 import eu.ginere.indexer.descriptor.IndexerElement;
 import eu.ginere.indexer.descriptor.IndexerResult;
+import eu.ginere.test.hsqldb.dao.AbstractDAO;
 
 public class IndexerDAO extends AbstractDAO implements IndexerDAOInterface{
 

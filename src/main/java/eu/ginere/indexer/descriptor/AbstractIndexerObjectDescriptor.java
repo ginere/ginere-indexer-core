@@ -94,9 +94,9 @@ public abstract class AbstractIndexerObjectDescriptor<T> implements IndexerObjec
 	 * @param key
 	 * @return
 	 */
-	protected abstract T get(String key,String style);
+	protected abstract Object get(String key,String style);
 	
-	public T get(IndexerResult result,String style){
+	public Object get(IndexerResult result,String style){
 		String id=result.getId();
 		
 		return get(id,style);		

@@ -1,4 +1,4 @@
-package eu.ginere.indexer.hsqldb;
+package eu.ginere.indexer.test.hsqldb;
 
 import javax.naming.NamingException;
 
@@ -8,8 +8,8 @@ import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import eu.ginere.hsqldb.dao.DataBase;
 import eu.ginere.indexer.hsqldb.page.WebPageDAO;
+import eu.ginere.test.hsqldb.dao.DataBase;
 
 public class WebPageDAOTest extends TestCase {
 	static final Logger log = Logger.getLogger(WebPageDAOTest.class);

@@ -5,7 +5,7 @@ import java.util.Date;
 
 import eu.ginere.base.util.dao.DaoManagerException;
 import eu.ginere.base.util.descriptor.annotation.Description;
-import eu.ginere.hsqldb.dao.KeyDTO;
+import eu.ginere.test.hsqldb.dao.KeyDTO;
 
 public class WebPage extends KeyDTO{
     

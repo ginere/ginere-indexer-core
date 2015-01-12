@@ -14,7 +14,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import eu.ginere.base.util.dao.DaoManagerException;
-import eu.ginere.hsqldb.dao.AbstractKeyDTODao;
+import eu.ginere.test.hsqldb.dao.AbstractKeyDTODao;
 
 public class WebPageDAO extends AbstractKeyDTODao<WebPage>{
 	
