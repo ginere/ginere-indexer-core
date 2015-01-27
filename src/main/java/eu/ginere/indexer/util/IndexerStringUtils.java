@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 public abstract class IndexerStringUtils{
 
 	static final Logger log = Logger.getLogger(IndexerStringUtils.class);
-	private static final String SEPARATOR_CHARS = "'()/-, \t\n\r";
+	private static final String SEPARATOR_CHARS = "'(){}[]|/-,.:;\"? \t\n\r";
 
 
 	public static String getStringValue(Object value) {
@@ -44,10 +44,16 @@ public abstract class IndexerStringUtils{
 		} else if ("".equals(stringValue)){
 			return ;			
 		} else {
+			
+//			if (stringValue.contains(".")){
+//				log.debug("Warning:"+stringValue);
+//			}
 			String array[]=StringUtils.split(stringValue,SEPARATOR_CHARS);
 			
 			for (String val:array){
-				if (val.length()>=minTokenLength && !StringUtils.isNumeric(val)){
+//				if (val.length()>=minTokenLength && !StringUtils.isNumeric(val)){
+				if (val.length()>=minTokenLength){
+										
 					// minusclas
 					val=val.toLowerCase();
 					// quitamos los acentos

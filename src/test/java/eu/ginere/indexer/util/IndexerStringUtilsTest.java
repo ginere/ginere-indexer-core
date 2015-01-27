@@ -1,9 +1,9 @@
 package eu.ginere.indexer.util;
 
+import java.util.HashSet;
+
 import org.apache.log4j.Logger;
 import org.junit.Test;
-
-import eu.ginere.indexer.util.IndexerStringUtils;
 
 public class IndexerStringUtilsTest {
 
@@ -15,6 +15,13 @@ public class IndexerStringUtilsTest {
 			String a=null;
 			String b=null;
 			int ret;
+			
+			HashSet<String> tokens=new HashSet<String>();
+			
+			IndexerStringUtils.getTokens(tokens,"Guerra.De.Las",3);
+			
+			log.debug("Tokends '"+tokens);
+			
 			
 			ret=IndexerStringUtils.computeLevenshteinDistance(a, b);
 			
