@@ -130,6 +130,25 @@
 		  <artifactId>jsoup</artifactId>
 		  <version>1.7.3</version>
 		</dependency>
+        <dependency>
+          <groupId>org.hsqldb</groupId>
+          <artifactId>hsqldb</artifactId>
+          <version>2.3.2</version>
+          <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+            <scope>test</scope>
+		</dependency>
+        <dependency>
+	      <groupId>org.jsoup</groupId>
+	      <artifactId>jsoup</artifactId>
+	      <version>1.7.3</version>
+          <scope>test</scope>
+        </dependency>
+
 
 <!--
 		<dependency>
@@ -179,7 +198,7 @@
 		<github.global.server>github</github.global.server>
 
 		<!-- GINERE -->
-		<ginere-base.version>1.2.0</ginere-base.version>
+		<ginere-base.version>1.2.1-SNAPSHOT</ginere-base.version>
 
 	</properties>
 
