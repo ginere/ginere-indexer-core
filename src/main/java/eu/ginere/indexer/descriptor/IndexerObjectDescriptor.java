@@ -38,6 +38,6 @@ public interface IndexerObjectDescriptor<T>  {
 	 * @param style
 	 * @return
 	 */
-	public T get(IndexerResult result,String style);
+	public Object get(IndexerResult result,String style);
 	
 }
