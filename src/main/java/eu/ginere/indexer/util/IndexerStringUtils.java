@@ -24,13 +24,15 @@ public abstract class IndexerStringUtils{
 		}
 	}
 
-	public static HashSet<String> getTokens(String stringValue) {
-		HashSet<String> ret=new HashSet<String> ();
+//	public static HashSet<String> getTokens(String stringValue) {
+//		HashSet<String> ret=new HashSet<String> ();
+//
+//		getTokens(ret,stringValue,0);
+//		return ret;
+//	}
 
-		getTokens(ret,stringValue,0);
-		return ret;
-	}
 	
+
 	public static HashSet<String> getTokens(String stringValue,int minTokenLength) {
 		HashSet<String> ret=new HashSet<String> ();
 

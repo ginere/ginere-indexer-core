@@ -13,6 +13,7 @@ import eu.ginere.base.util.properties.GlobalFileProperties;
 import eu.ginere.base.util.test.TestResult;
 import eu.ginere.indexer.dao.IndexerDAOInterface;
 import eu.ginere.indexer.dao.TokenDAOInterface;
+import eu.ginere.indexer.descriptor.AbstractIndexerObjectDescriptor;
 import eu.ginere.indexer.descriptor.IndexerResult;
 import eu.ginere.indexer.descriptor.ObjectDescriptorManager;
 import eu.ginere.indexer.util.IndexerStringUtils;
@@ -55,7 +56,7 @@ public class SearchManager extends AbstractIndexerManager{
 
 		pageSize=verifyPageSize(pageSize);
 		
-		HashSet<String> tokensSet=IndexerStringUtils.getTokens(tokenList);
+		HashSet<String> tokensSet=IndexerStringUtils.getTokens(tokenList,AbstractIndexerObjectDescriptor.MIN_TOKEN_LENGTH_TO_INDEX);
 		
 		try {
 
