@@ -1,5 +1,6 @@
 package eu.ginere.indexer.util;
 
+import java.util.Collection;
 import java.util.HashSet;
 
 import org.apache.commons.lang.StringUtils;
@@ -19,6 +20,15 @@ public abstract class IndexerStringUtils{
 			return (String)value;
 		} else if (value instanceof Integer){
 			return Integer.toString((Integer)value);
+		} else if (value instanceof Collection<?>){
+			Collection<?>collection=(Collection<?>)value;
+			StringBuilder buffer=new StringBuilder();
+			for (Object obj:collection){
+				buffer.append(getStringValue(obj));
+				buffer.append(',');
+			}
+			
+			return buffer.toString();
 		} else {
 			return value.toString();
 		}

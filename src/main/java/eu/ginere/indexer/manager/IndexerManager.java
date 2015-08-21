@@ -1,8 +1,9 @@
 package eu.ginere.indexer.manager;
 
-import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import eu.ginere.base.util.dao.DaoManagerException;
@@ -28,30 +29,89 @@ public class IndexerManager extends AbstractIndexerManager {
         return super.testProtected();
     }
 
+	public void delete(Object object,
+            	IndexerObjectDescriptor descriptor) throws DaoManagerException{
+		
+		String type=descriptor.getType();
+		String key=descriptor.getObjectId(object);
+
+		HashSet <String> tokensToBeDeleted=indexerDAO.getTokens(type,key);
+		indexerDAO.delete(type,key,tokensToBeDeleted);
+		tokenDAO.decreaseTokenCount(type,tokensToBeDeleted);
+		
+		return;
+	}
+
     
 	public void index(Object object,
                       IndexerObjectDescriptor descriptor) throws DaoManagerException{
-		
-		List <IndexerElement>list=descriptor.getIndexerElements(object);
 
-		if (log.isDebugEnabled()){
-			log.debug("Index for object:"+object+" result:"+list.size());
-		}
+		String type=descriptor.getType();
+		String key=descriptor.getObjectId(object);
+
 		
-		for (IndexerElement indx:list){
-			if (log.isDebugEnabled()){
-				log.debug("Result:"+indx);
+		List <IndexerElement>newIndexerList=descriptor.getIndexerElements(object);
+		
+//		if (log.isDebugEnabled()){
+//			log.debug("Index for object:"+object+" result:"+newIndexerList.size());
+//		}
+		
+		
+		if (indexerDAO.exists(type,key)) {
+			// update the existing element
+			HashSet<String> oldTokenList=indexerDAO.getTokens(type,key);
+			HashSet<String> newInsertedTokens=new HashSet<String>(newIndexerList.size());
+
+			for (IndexerElement newIndexElement:newIndexerList){
+				String newToken=newIndexElement.token;
+
+//				if (log.isDebugEnabled()){
+//					log.debug("Result:"+newIndexElement);
+//				}
+				
+				if (StringUtils.isBlank(newToken)){
+					log.warn("Empty toke:"+newToken);
+					continue;
+				}
+
+				if (!oldTokenList.contains(newToken)){
+					// we have a new token, insert and increase
+					newInsertedTokens.add(newToken);
+					indexerDAO.insert(newIndexElement);
+				} else {
+					// already existing token
+					// remove the old token from the old token list
+					oldTokenList.remove(newToken);
+				}
 			}
 			
-			if (indx.token == null || "".equals(indx.token)){
-				log.warn("Empty toke:"+indx);
-			} else {
+			// in the old token list only stay the tokens that are not in the new list
+			// then remove and decrease
+			indexerDAO.delete(type, key,oldTokenList);
+			tokenDAO.decreaseTokenCount(type,oldTokenList);
+		
+			// increase the token count of the new created
+			tokenDAO.increaseTokenCount(type,newInsertedTokens);
 			
-//			actualizar tambien los tokens ....
-//			TokenDAO.DAO.updateOrInsert(indx.getToken(),indx.getType());
-			
-			indexerDAO.insert(indx);
+		} else {
+			// create a new element
+			HashSet<String> tokensToIncrease=new HashSet<String>(newIndexerList.size());
+
+			for (IndexerElement indx:newIndexerList){
+//				if (log.isDebugEnabled()){
+//					log.debug("Result:"+indx);
+//				}
+				
+				if (StringUtils.isBlank(indx.token)){
+					log.warn("Empty toke:"+indx);
+				} else {
+					indexerDAO.insert(indx);
+					tokensToIncrease.add(indx.getToken());
+				}
 			}
+			
+			// update the tokens count
+			tokenDAO.increaseTokenCount(type,tokensToIncrease);
 		}
 	}
 

@@ -142,7 +142,7 @@ public class SearchManager extends AbstractIndexerManager{
 	private int getCount(HashSet<String> tokensSet, String type) throws DaoManagerException {
 		if (tokensSet.size() == 1) {
 			String token=tokensSet.iterator().next();
-			return tokenDAO.getCount(token, type);
+			return tokenDAO.getCount(token, type,0);
 		} else {
 			return tokenDAO.getCount(tokensSet, type);
 		}

@@ -749,5 +749,30 @@ public class IndexerDAO extends AbstractDAO implements IndexerDAOInterface{
 		}		
 	}
 
+	@Override
+	public long delete(String type, String key) throws DaoManagerException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void delete(String type, String key, HashSet<String> oldTokenList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean exists(String type, String key) throws DaoManagerException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public HashSet<String> getTokens(String type, String key)
+			throws DaoManagerException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

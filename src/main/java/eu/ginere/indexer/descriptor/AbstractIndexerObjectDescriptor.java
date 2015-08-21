@@ -87,7 +87,7 @@ public abstract class AbstractIndexerObjectDescriptor<T> implements IndexerObjec
 	 * @param object
 	 * @return
 	 */
-	protected abstract String getObjectId(T object);
+	public abstract String getObjectId(T object);
 	
 	/**
 	 * returns the object for this id or null if no object defined

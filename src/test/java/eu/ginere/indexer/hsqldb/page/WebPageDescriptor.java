@@ -20,7 +20,7 @@ public class WebPageDescriptor extends AbstractIndexerObjectDescriptor<WebPage>{
 	}
 	
 	@Override
-	protected String getObjectId(WebPage object) {
+	public String getObjectId(WebPage object) {
 		return object.getKey();
 	}
 

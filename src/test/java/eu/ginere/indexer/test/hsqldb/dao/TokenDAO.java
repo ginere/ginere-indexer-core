@@ -477,5 +477,26 @@ public class TokenDAO extends AbstractDAO implements TokenDAOInterface{
 		insert(type);
 	}
 
+	@Override
+	public int getCount(String token, String type, int defaultValue)
+			throws DaoManagerException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void decreaseTokenCount(String type, Collection<String> tokensDeleted)
+			throws DaoManagerException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void increaseTokenCount(String type, Collection<String> tokensDeleted)
+			throws DaoManagerException {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

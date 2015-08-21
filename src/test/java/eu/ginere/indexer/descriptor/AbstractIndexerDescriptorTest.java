@@ -40,7 +40,7 @@ public class AbstractIndexerDescriptorTest extends TestCase {
     	}
     	
 		@Override
-		protected String getObjectId(Person object) {
+		public String getObjectId(Person object) {
 			cache.put( object.nationaIdCardNumber, object);
 			return object.nationaIdCardNumber;
 		}

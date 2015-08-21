@@ -22,6 +22,14 @@ public interface IndexerObjectDescriptor<T>  {
 	public String getType();
 
 	/**
+	 * This return the unic ID of the object of this type.
+	 * Useful to update a remove indexer information.
+	 * 
+	 * @return
+	 */
+	public String getObjectId(T object);
+
+	/**
 	 * This return all the tokens for one element.
 	 * 
 	 * @param object

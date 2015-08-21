@@ -2,6 +2,7 @@ package eu.ginere.indexer.dao;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 import eu.ginere.base.util.dao.DaoManagerException;
@@ -45,5 +46,42 @@ public interface IndexerDAOInterface extends TestInterface{
 	 * @throws DaoManagerException
 	 */
 	public Date getLastUpdate(String type) throws DaoManagerException;
+
+	/**
+	 * This returns and delete all the tokends associated to that type and key.
+	 * The retuned list normaly should be used to decrease the token count.
+	 * 
+	 * @param type
+	 * @param key
+	 * @return
+	 */
+	public long delete(String type, String key) throws DaoManagerException;
+
+	/**
+	 * This delete those tokens from the list associated  to this type and key.
+	 * @param type
+	 * @param key
+	 * @param oldTokenList
+	 */
+	public void delete(String type, String key, HashSet<String> oldTokenList);
+
+
+	/**
+	 * This return true if this exists.
+	 * 
+	 * @param type
+	 * @param key
+	 * @return
+	 */
+	public boolean exists(String type, String key) throws DaoManagerException;
+
+	/**
+	 * Returns al the tokens associates to this type and id.
+	 * 
+	 * @param type
+	 * @param key
+	 * @return
+	 */
+	public HashSet<String> getTokens(String type, String key) throws DaoManagerException;
 
 }
