@@ -29,6 +29,18 @@ public class IndexerManager extends AbstractIndexerManager {
         return super.testProtected();
     }
 
+	public void delete(String objectKey,
+        	IndexerObjectDescriptor descriptor) throws DaoManagerException{
+	
+		String type=descriptor.getType();
+		String key=objectKey;
+	
+		HashSet <String> tokensToBeDeleted=indexerDAO.getTokens(type,key);
+		indexerDAO.delete(type,key,tokensToBeDeleted);
+		tokenDAO.decreaseTokenCount(type,tokensToBeDeleted);
+		
+		return;
+	}
 	public void delete(Object object,
             	IndexerObjectDescriptor descriptor) throws DaoManagerException{
 		
