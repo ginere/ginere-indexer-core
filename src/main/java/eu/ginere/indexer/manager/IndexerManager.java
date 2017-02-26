@@ -28,6 +28,10 @@ public class IndexerManager extends AbstractIndexerManager {
 	public TestResult test(){
         return super.testProtected();
     }
+	
+	public void init(){	
+		log.info("No initi method implemented for:"+getClass().getName());
+	}
 
 	public void delete(String objectKey,
         	IndexerObjectDescriptor descriptor) throws DaoManagerException{

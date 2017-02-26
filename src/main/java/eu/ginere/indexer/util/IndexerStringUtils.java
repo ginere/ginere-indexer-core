@@ -11,6 +11,7 @@ public abstract class IndexerStringUtils{
 
 	static final Logger log = Logger.getLogger(IndexerStringUtils.class);
 	private static final String SEPARATOR_CHARS = "'(){}[]|/-,.:;\"? \t\n\r";
+	private static final int MAX_TOMKEN_NUMBER = 3;
 
 
 	public static String getStringValue(Object value) {
@@ -64,7 +65,7 @@ public abstract class IndexerStringUtils{
 			
 			for (String val:array){
 //				if (val.length()>=minTokenLength && !StringUtils.isNumeric(val)){
-				if (val.length()>=minTokenLength){
+				if (val.length()>=minTokenLength && tokens.size() <= MAX_TOMKEN_NUMBER){
 										
 					// minusclas
 					val=val.toLowerCase();

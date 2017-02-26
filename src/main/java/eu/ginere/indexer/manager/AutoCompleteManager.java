@@ -33,7 +33,10 @@ public class AutoCompleteManager extends AbstractIndexerManager{
 	public TestResult test(){
         return super.testProtected();
     }
-
+	
+	public void init(){	
+		log.info("No initi method implemented for:"+getClass().getName());
+	}
     
 	/**
 	 * Propone autocompletacion en la busqueda. DEvuelve en primer lugar la cadenas de busqeuda que dan mas resultados

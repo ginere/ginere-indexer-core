@@ -68,6 +68,10 @@ public class GlobalManager extends AbstractManager implements TestInterface{
         
         return ret;
     }
+		
+	public void init(){	
+		log.info("No initi method implemented for:"+getClass().getName());
+	}
 
 	public IndexerManager getIndexerManager() {
 		return indexerManager;

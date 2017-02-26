@@ -38,7 +38,10 @@ public class SearchManager extends AbstractIndexerManager{
 	public TestResult test(){
         return super.testProtected();
     }
-
+	
+	public void init(){	
+		log.info("No initi method implemented for:"+getClass().getName());
+	}
 
 	/**
 	 * Realiza una busqueda. Devuelve en primer lugar los elementos que mas se aproximan
@@ -168,7 +171,7 @@ public class SearchManager extends AbstractIndexerManager{
 	}
 
 	private int verifyPageSize(int pageSize) {
-		int maxPageSize=GlobalFileProperties.getIntValue(SearchManager.class, "MaxPageSize", 100);
+		int maxPageSize=GlobalFileProperties.getIntValue(SearchManager.class, "MaxPageSize", "MaxPageSize",100);
 		if (pageSize==0 || pageSize>maxPageSize){
 			return maxPageSize;
 		} else {
